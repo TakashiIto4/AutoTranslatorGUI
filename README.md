@@ -14,7 +14,8 @@ AppGUI.pyから起動できる。
 - 翻訳完了時にメッセージを表示
 
 ## まだ実装できていない機能  
-- Google Cloud 用 token.pickeファイルのパス指定
+- Google Cloud 用 token.pickleファイルのパス指定
 - client secret file のパス指定
 - 動画の元々の言語設定(現時点では日本語のみ)
 - config.iniをアプリ側で設定
+- 翻訳の進行状況をアプリ上で表示
