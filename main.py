@@ -637,3 +637,6 @@ def translator():
     for langNum, langData in batchSettings.items():
         # Process current fallback language
         process_language(langData)
+
+if __name__ == '__main__':
+    translator()
