@@ -58,7 +58,7 @@ class Application(tk.Frame):
         # --------------------------------------------------------
         # 言語選択用Frame
         self.frame_lang = tk.Frame(self.master)
-        self.frame_lang.pack(side=tk.TOP)
+        self.frame_lang.pack()
 
         # --------------------------------------------------------
         # 言語選択ボタン
@@ -91,18 +91,18 @@ class Application(tk.Frame):
 
         # --------------------------------------------------------
         # 配置
-        chk_en.grid(row=5, column=0)
-        chk_es.grid(row=5, column=1)
-        chk_hi.grid(row=5, column=2)
-        chk_ar.grid(row=5, column=3)
-        chk_ru.grid(row=6, column=0)
-        chk_pt.grid(row=6, column=1)
-        chk_it.grid(row=6, column=2)
-        chk_id.grid(row=6, column=3)
-        chk_ko.grid(row=7, column=0)
-        chk_de.grid(row=7, column=1)
-        chk_zh.grid(row=7, column=2)
-        chk_tr.grid(row=7, column=3)
+        chk_en.grid(row=5, column=0, sticky=tk.W)
+        chk_es.grid(row=5, column=1, sticky=tk.W)
+        chk_hi.grid(row=5, column=2, sticky=tk.W)
+        chk_ar.grid(row=5, column=3, sticky=tk.W)
+        chk_ru.grid(row=6, column=0, sticky=tk.W)
+        chk_pt.grid(row=6, column=1, sticky=tk.W)
+        chk_it.grid(row=6, column=2, sticky=tk.W)
+        chk_id.grid(row=6, column=3, sticky=tk.W)
+        chk_ko.grid(row=7, column=0, sticky=tk.W)
+        chk_de.grid(row=7, column=1, sticky=tk.W)
+        chk_zh.grid(row=7, column=2, sticky=tk.W)
+        chk_tr.grid(row=7, column=3, sticky=tk.W)
 
 
         #---------------------------------------
