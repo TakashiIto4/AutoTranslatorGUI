@@ -30,17 +30,35 @@ class Application(tk.Frame):
         #  ファイル選択
         # --------------------------------------------------------
         # ファイル選択用Frame
-        self.frame_file = tk.Frame(self.master, background='red')
-        self.frame_file.pack(side=tk.TOP)
+        self.frame_file = tk.Frame(self.master)
+        self.frame_file.pack()
 
         lbl_movie = tk.Label(self.frame_file, text="動画ファイル")
         lbl_sub = tk.Label(self.frame_file, text="字幕ファイル")
 
-        self.entry1 = tk.Entry(self.frame_file)
-        self.entry2 = tk.Entry(self.frame_file)
+        self.entry1 = tk.Entry(self.frame_file, width=70)
+        self.entry2 = tk.Entry(self.frame_file, width=70)
 
         button_mov = tk.Button(self.frame_file, text="選択", command=self.select_mov_path)
         button_sub = tk.Button(self.frame_file, text="選択", command=self.select_sub_path)
+
+        # --------------------------------------------------------
+        # 配置
+        lbl_movie.grid(row=0, column=0)
+        lbl_sub.grid(row=1, column=0)
+
+        self.entry1.grid(row=0, column=1)
+        self.entry2.grid(row=1, column=1)
+
+        button_mov.grid(row=0, column=2)
+        button_sub.grid(row=1, column=2)
+
+        #---------------------------------------
+        #  言語選択
+        # --------------------------------------------------------
+        # 言語選択用Frame
+        self.frame_lang = tk.Frame(self.master)
+        self.frame_lang.pack(side=tk.TOP)
 
         # --------------------------------------------------------
         # 言語選択ボタン
@@ -57,31 +75,22 @@ class Application(tk.Frame):
                          'de' : [10, tk.BooleanVar()],
                          'zh' : [11, tk.BooleanVar()],
                          'tr' : [12, tk.BooleanVar()]}
-        chk_en = tk.Checkbutton(self.frame_file, text='英語', variable=self.lang_dict['en'][1])
-        chk_es = tk.Checkbutton(self.frame_file, text='スペイン語', variable=self.lang_dict['es'][1])
-        chk_hi = tk.Checkbutton(self.frame_file, text='ヒンディー語', variable=self.lang_dict['hi'][1])
-        chk_ar = tk.Checkbutton(self.frame_file, text='アラビア語', variable=self.lang_dict['ar'][1])
-        chk_ru = tk.Checkbutton(self.frame_file, text='ロシア語', variable=self.lang_dict['ru'][1])
-        chk_pt = tk.Checkbutton(self.frame_file, text='ポルトガル語', variable=self.lang_dict['pt'][1])
-        chk_it = tk.Checkbutton(self.frame_file, text='イタリア語', variable=self.lang_dict['it'][1])
-        chk_id = tk.Checkbutton(self.frame_file, text='インドネシア語', variable=self.lang_dict['id'][1])
-        chk_ja = tk.Checkbutton(self.frame_file, text='日本語', variable=self.lang_dict['ja'][1])
-        chk_ko = tk.Checkbutton(self.frame_file, text='韓国語', variable=self.lang_dict['ko'][1])
-        chk_de = tk.Checkbutton(self.frame_file, text='ドイツ語', variable=self.lang_dict['de'][1])
-        chk_zh = tk.Checkbutton(self.frame_file, text='中国語', variable=self.lang_dict['zh'][1])
-        chk_tr = tk.Checkbutton(self.frame_file, text='トルコ語', variable=self.lang_dict['tr'][1])
+        chk_en = tk.Checkbutton(self.frame_lang, text='英語', variable=self.lang_dict['en'][1])
+        chk_es = tk.Checkbutton(self.frame_lang, text='スペイン語', variable=self.lang_dict['es'][1])
+        chk_hi = tk.Checkbutton(self.frame_lang, text='ヒンディー語', variable=self.lang_dict['hi'][1])
+        chk_ar = tk.Checkbutton(self.frame_lang, text='アラビア語', variable=self.lang_dict['ar'][1])
+        chk_ru = tk.Checkbutton(self.frame_lang, text='ロシア語', variable=self.lang_dict['ru'][1])
+        chk_pt = tk.Checkbutton(self.frame_lang, text='ポルトガル語', variable=self.lang_dict['pt'][1])
+        chk_it = tk.Checkbutton(self.frame_lang, text='イタリア語', variable=self.lang_dict['it'][1])
+        chk_id = tk.Checkbutton(self.frame_lang, text='インドネシア語', variable=self.lang_dict['id'][1])
+        chk_ja = tk.Checkbutton(self.frame_lang, text='日本語', variable=self.lang_dict['ja'][1])
+        chk_ko = tk.Checkbutton(self.frame_lang, text='韓国語', variable=self.lang_dict['ko'][1])
+        chk_de = tk.Checkbutton(self.frame_lang, text='ドイツ語', variable=self.lang_dict['de'][1])
+        chk_zh = tk.Checkbutton(self.frame_lang, text='中国語', variable=self.lang_dict['zh'][1])
+        chk_tr = tk.Checkbutton(self.frame_lang, text='トルコ語', variable=self.lang_dict['tr'][1])
 
         # --------------------------------------------------------
         # 配置
-        lbl_movie.grid(row=0, column=0)
-        lbl_sub.grid(row=1, column=0)
-
-        self.entry1.grid(row=0, column=1, sticky=tk.EW)
-        self.entry2.grid(row=1, column=1, sticky=tk.EW)
-
-        button_mov.grid(row=0, column=2)
-        button_sub.grid(row=1, column=2)
-
         chk_en.grid(row=5, column=0)
         chk_es.grid(row=5, column=1)
         chk_hi.grid(row=5, column=2)
@@ -100,14 +109,14 @@ class Application(tk.Frame):
         #  設定
         # --------------------------------------------------------
         # 設定用Frame
-        self.frame_setting = tk.Frame(self.master, background='yellow')
+        self.frame_setting = tk.Frame(self.master)
         self.frame_setting.pack()
 
         #---------------------------------------
         #  認証
         # --------------------------------------------------------
         # 認証用Frame
-        self.frame_auth = tk.Frame(self.master, background='blue')
+        self.frame_auth = tk.Frame(self.master)
         self.frame_auth.pack()
 
         # --------------------------------------------------------
@@ -125,7 +134,7 @@ class Application(tk.Frame):
         radio_translator_deepl = tk.Radiobutton(self.frame_auth_tr, text='deepl', value='deepl', variable=self.preferredTranslateService, command=self.set_TranslateService)
 
         lbl_google_project_id = tk.Label(self.frame_auth_tr, text="Google Project ID")
-        self.entry_google_project_id = tk.Entry(self.frame_auth_tr, width=30)
+        self.entry_google_project_id = tk.Entry(self.frame_auth_tr, width=50)
         try:
             self.entry_google_project_id.insert(tk.END, cloudConfig['CLOUD']['google_project_id']) #Keyを設定済の場合はそれを表示
         except:
@@ -135,7 +144,7 @@ class Application(tk.Frame):
                                              command=lambda:self.update_cloud_ini('google_project_id', self.entry_google_project_id, 'Google Project ID'))
 
         lbl_deepl_api_key = tk.Label(self.frame_auth_tr, text='DeepL API Key')
-        self.entry_deepl_api_key = tk.Entry(self.frame_auth_tr, width=30)
+        self.entry_deepl_api_key = tk.Entry(self.frame_auth_tr, width=50)
         try:
             self.entry_deepl_api_key.insert(tk.END, cloudConfig['CLOUD']['deepl_api_key']) #Keyを設定済の場合はそれを表示
         except:
@@ -173,7 +182,7 @@ class Application(tk.Frame):
         radio_speech_azure = tk.Radiobutton(self.frame_auth_sp, text='azure', value='azure', variable=self.ttsService, command=self.set_ttsService)
 
         lbl_google_project_id_sp = tk.Label(self.frame_auth_sp, text="Google Project ID")
-        self.entry_google_project_id_sp = tk.Entry(self.frame_auth_sp, width=30)
+        self.entry_google_project_id_sp = tk.Entry(self.frame_auth_sp, width=50)
         try:
             self.entry_google_project_id_sp.insert(tk.END, cloudConfig['CLOUD']['google_project_id']) #Keyを設定済の場合はそれを表示
         except:
@@ -183,7 +192,7 @@ class Application(tk.Frame):
                                                 command=lambda:self.update_cloud_ini('google_project_id', self.entry_google_project_id_sp, 'Google Project ID'))
 
         lbl_azure_speech_key = tk.Label(self.frame_auth_sp, text="Azure API Key")
-        self.entry_azure_speech_key = tk.Entry(self.frame_auth_sp, width=30)
+        self.entry_azure_speech_key = tk.Entry(self.frame_auth_sp, width=50)
         try:
             self.entry_azure_speech_key.insert(tk.END, cloudConfig['CLOUD']['azure_speech_key']) #Keyを設定済の場合はそれを表示
         except:
@@ -208,7 +217,7 @@ class Application(tk.Frame):
         #  実行ボタン
         # --------------------------------------------------------
         # 実行ボタン用Frame
-        self.frame_exe = tk.Frame(self.master, background='green')
+        self.frame_exe = tk.Frame(self.master)
         self.frame_exe.pack()
         button_exe = tk.Button(self.frame_exe, text="翻訳", command=self.translate)
         button_exe.pack()
@@ -272,5 +281,6 @@ class Application(tk.Frame):
 
 if __name__ == "__main__":
     root = tk.Tk()
+    root.resizable(width=False, height=False)
     app = Application(master=root)
     app.mainloop()
