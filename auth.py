@@ -43,7 +43,7 @@ DEEPL_API = None
 def get_authenticated_service(youtubeAuth = False):
   global GOOGLE_TTS_API
   global GOOGLE_TRANSLATE_API
-  CLIENT_SECRETS_FILE = 'client_secret_658570770582-61a7c9bmqnrp9sa35haofscerh7u7o23.apps.googleusercontent.com.json'
+  CLIENT_SECRETS_FILE = '*****'
   YOUTUBE_CLIENT_SECRETS_FILE = 'yt_client_secrets.json'
   GOOGLE_API_SCOPES = ['https://www.googleapis.com/auth/cloud-platform', 'https://www.googleapis.com/auth/cloud-translation']
   
