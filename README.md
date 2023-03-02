@@ -12,7 +12,7 @@ CUIで使いたい場合はmain.pyを実行すれば自動翻訳・吹替がで�
 - 翻訳サービス(google translate or deepl)と読み上げサービス(google tts or azure tts)のAPI Keyを取得
 - googleを使用する場合はクライアントIDに関連付けられたclient secretを含むJSONファイルをダウンロードし、auth.pyにパスを入力
 
-##実行方法  
+## 実行方法  
 1. python AppGUI.pyを実行
 2. 動画ファイルと字幕ファイルを選択
 3. 翻訳する言語を選択(複数選択可)
