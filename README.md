@@ -1,7 +1,7 @@
 # AutoTranslatorGUI  
 https://github.com/ThioJoe/Auto-Synced-Translated-Dubs  
 をGUI化するために作成。  
-動画ファイルと字幕ファイルを準備すれば自動で翻訳と吹き替え音声を作成できる。  
+動画ファイルと字幕ファイルを準備すれば自動で翻訳された字幕ファイルと吹き替え音声を作成できる。  
 AppGUI.pyから起動できる。  
 
 ## 作成した機能  
