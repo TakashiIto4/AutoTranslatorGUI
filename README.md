@@ -14,7 +14,7 @@ CUIで使いたい場合はmain.pyを実行すれば自動翻訳・吹替がで�
 
 ### 外部の必要ツール
 - ffmpegのインストール(https://ffmpeg.org/download.html)
-- 'rubberband'というバイナリファイル  
+- 'rubberband'というバイナリファイル (https://breakfastquay.com/rubberband/) 
   インストールする必要はなく、exeとdllファイルの両方をスクリプトと同じディレクトリに置くだけでよい
 
 ## 実行方法  
