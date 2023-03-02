@@ -153,6 +153,8 @@ class Application(tk.Frame):
                                          text='更新', 
                                          command=lambda:self.update_cloud_ini('deepl_api_key', self.entry_deepl_api_key, 'DeepL API Key'))
 
+        # --------------------------------------------------------
+        # 配置
         lbl_translator.grid(row=0, column=0)
 
         radio_translator_google.grid(row=1, column=1)
@@ -201,6 +203,8 @@ class Application(tk.Frame):
                                             text='更新', 
                                             command=lambda:self.update_cloud_ini('azure_speech_key', self.entry_azure_speech_key, 'Azure API Key'))
 
+        # --------------------------------------------------------
+        # 配置
         lbl_speech.grid(row=0, column=0)
 
         radio_speech_google.grid(row=1, column=1)
@@ -225,14 +229,14 @@ class Application(tk.Frame):
         self.message_label.pack()
 
     def select_mov_path(self):
-        '動画ファイル選択ボタンが押された時の処理'
+        # 動画ファイル選択ボタンが押された時の処理
         self.video_file_path = filedialog.askopenfilename()
         self.entry1.delete(0, tk.END)  # Entryウィジェットの中身を削除
         self.entry1.insert(tk.END, self.video_file_path)  # Entryウィジェットにファイルパスを表示
         batchConfig['SETTINGS']['original_video_file_path'] = self.video_file_path # 動画ファイルのパスを編集
 
     def select_sub_path(self):
-        '字幕ファイル選択ボタンが押された時の処理'
+        # 字幕ファイル選択ボタンが押された時の処理
         self.subtitle_file_path = filedialog.askopenfilename()
         self.entry2.delete(0, tk.END)  # Entryウィジェットの中身を削除
         self.entry2.insert(tk.END, self.subtitle_file_path)  # Entryウィジェットにファイルパスを表示
@@ -245,6 +249,7 @@ class Application(tk.Frame):
         cloudConfig['CLOUD']['tts_service'] = self.ttsService.get()
 
     def update_cloud_ini(self, ini_var, val, text):
+        # API Keyの更新ボタンが押された時の処理
         cloudConfig['CLOUD'][ini_var] = val.get()
         with open('cloud_service_settings.ini', 'w') as configfile:
                 cloudConfig.write(configfile)
