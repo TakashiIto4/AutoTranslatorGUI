@@ -12,6 +12,11 @@ CUIで使いたい場合はmain.pyを実行すれば自動翻訳・吹替がで�
 - 翻訳サービス(google translate or deepl)と読み上げサービス(google tts or azure tts)のAPI Keyを取得
 - googleを使用する場合はクライアントIDに関連付けられたclient secretを含むJSONファイルをダウンロードし、auth.pyにパスを入力
 
+### 外部の必要ツール
+- ffmpegのインストール(https://ffmpeg.org/download.html)
+- 'rubberband'というバイナリファイル  
+  インストールする必要はなく、exeとdllファイルの両方をスクリプトと同じディレクトリに置くだけでよい
+
 ## 実行方法  
 1. python AppGUI.pyを実行
 2. 動画ファイルと字幕ファイルを選択
@@ -32,7 +37,6 @@ CUIで使いたい場合はmain.pyを実行すれば自動翻訳・吹替がで�
 - 翻訳完了時にメッセージを表示
 
 ## まだ実装できていない機能  
-- Google Cloud 用 token.pickleファイルのパス指定
 - Google Client Secret JSONファイルのパス指定
 - 動画の元々の言語設定(現時点では日本語のみ)
 - config.iniをアプリ側で設定
