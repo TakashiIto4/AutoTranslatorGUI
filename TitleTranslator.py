@@ -8,13 +8,10 @@
 # SET THE TITLE AND DESCRIPTION TEXT, AND VARIABLES IN THIS SECTION
 # Note: Make sure to keep the triple quotes around the text, don't remove the "r" before them
 #===============================================================================================================
-title = r"""【TOGA】めっちゃかっこいい購入品紹介するよ 22ss【最高】"""
+title = r"""タイトル"""
 
 description = r"""
-●お買い物動画はこちら↓
-
-TOGAの雰囲気まじでいいよな
-コレクションラインもpullaもvirilisも全てが最高
+動画概要欄の文章
 """
 
 # Characters to avoid translating. Update this with any characters that you don't want translated
