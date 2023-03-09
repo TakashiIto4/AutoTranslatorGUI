@@ -43,7 +43,8 @@ DEEPL_API = None
 def get_authenticated_service(youtubeAuth = False):
   global GOOGLE_TTS_API
   global GOOGLE_TRANSLATE_API
-  CLIENT_SECRETS_FILE = '*****'
+  # CLIENT_SECRETS_FILE = 'client_secrets.json'
+  client_secret_file = cloudConfig['CLOUD']['google_client_secret_file']
   YOUTUBE_CLIENT_SECRETS_FILE = 'yt_client_secrets.json'
   GOOGLE_API_SCOPES = ['https://www.googleapis.com/auth/cloud-platform', 'https://www.googleapis.com/auth/cloud-translation']
   
@@ -78,8 +79,8 @@ def get_authenticated_service(youtubeAuth = False):
   if youtubeAuth == True:
     secrets_file = YOUTUBE_CLIENT_SECRETS_FILE
   else:
-    secrets_file = CLIENT_SECRETS_FILE
-
+    # secrets_file = CLIENT_SECRETS_FILE
+    secrets_file = client_secret_file
   # Check if client_secrets.json file exists, if not give error
   if not os.path.exists(secrets_file):
     # In case people don't have file extension viewing enabled, they may add a redundant json extension

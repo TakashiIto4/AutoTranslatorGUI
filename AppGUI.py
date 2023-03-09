@@ -18,7 +18,7 @@ class Application(tk.Frame):
         super().__init__(master)
 
         self.master.title("動画・字幕翻訳ツール")  # ウィンドウタイトル
-        self.master.geometry("600x400")  # ウィンドウサイズ(幅x高さ)
+        self.master.geometry("750x400")  # ウィンドウサイズ(幅x高さ)
         
         self.video_file_path = ''  # 動画ファイルパスを格納する変数
         self.subtitle_file_path = ''  # 字幕ファイルパスを格納する変数
@@ -33,25 +33,25 @@ class Application(tk.Frame):
         self.frame_file = tk.Frame(self.master)
         self.frame_file.pack()
 
-        lbl_movie = tk.Label(self.frame_file, text="動画ファイル")
-        lbl_sub = tk.Label(self.frame_file, text="字幕ファイル")
+        lbl_video = tk.Label(self.frame_file, text="動画ファイル")
+        lbl_subtitle = tk.Label(self.frame_file, text="字幕ファイル")
 
         self.entry1 = tk.Entry(self.frame_file, width=70)
         self.entry2 = tk.Entry(self.frame_file, width=70)
 
-        button_mov = tk.Button(self.frame_file, text="選択", command=self.select_mov_path)
-        button_sub = tk.Button(self.frame_file, text="選択", command=self.select_sub_path)
+        button_video = tk.Button(self.frame_file, text="選択", command=self.select_video_file)
+        button_subtitle = tk.Button(self.frame_file, text="選択", command=self.select_subtitle_file)
 
         # --------------------------------------------------------
         # 配置
-        lbl_movie.grid(row=0, column=0)
-        lbl_sub.grid(row=1, column=0)
+        lbl_video.grid(row=0, column=0)
+        lbl_subtitle.grid(row=1, column=0)
 
         self.entry1.grid(row=0, column=1)
         self.entry2.grid(row=1, column=1)
 
-        button_mov.grid(row=0, column=2)
-        button_sub.grid(row=1, column=2)
+        button_video.grid(row=0, column=2)
+        button_subtitle.grid(row=1, column=2)
 
         #---------------------------------------
         #  言語選択
@@ -123,7 +123,7 @@ class Application(tk.Frame):
         # 翻訳クラウドサービス
         self.frame_auth_tr = tk.Frame(self.frame_auth)
         self.frame_auth_tr.pack()
-        lbl_translator = tk.Label(self.frame_auth_tr, text="翻訳サービス")
+        lbl_translator = tk.Label(self.frame_auth_tr, text="翻訳サービス", width=15)
         self.preferredTranslateService = tk.StringVar()
         try:
             self.preferredTranslateService.set(cloudConfig['CLOUD']['translate_service']) #前回選択されたサービスを初期値に選択
@@ -134,17 +134,27 @@ class Application(tk.Frame):
         radio_translator_deepl = tk.Radiobutton(self.frame_auth_tr, text='deepl', value='deepl', variable=self.preferredTranslateService, command=self.set_TranslateService)
 
         lbl_google_project_id = tk.Label(self.frame_auth_tr, text="Google Project ID")
-        self.entry_google_project_id = tk.Entry(self.frame_auth_tr, width=50)
+        self.entry_google_project_id = tk.Entry(self.frame_auth_tr, width=60)
         try:
             self.entry_google_project_id.insert(tk.END, cloudConfig['CLOUD']['google_project_id']) #Keyを設定済の場合はそれを表示
         except:
             pass
+        
         button_google_project_id = tk.Button(self.frame_auth_tr, 
                                              text='更新', 
                                              command=lambda:self.update_cloud_ini('google_project_id', self.entry_google_project_id, 'Google Project ID'))
+        
+        lbl_google_client_secret_file = tk.Label(self.frame_auth_tr, text="Google Client Secret File")
+        self.entry_google_client_secret_file_tr = tk.Entry(self.frame_auth_tr, width=60)
+        try:
+            self.entry_google_client_secret_file_tr.insert(tk.END, cloudConfig['CLOUD']['google_client_secret_file']) #Keyを設定済の場合はそれを表示
+        except:
+            pass
+        button_google_client_secret_file = tk.Button(self.frame_auth_tr, text="選択", command=self.select_client_file)
+
 
         lbl_deepl_api_key = tk.Label(self.frame_auth_tr, text='DeepL API Key')
-        self.entry_deepl_api_key = tk.Entry(self.frame_auth_tr, width=50)
+        self.entry_deepl_api_key = tk.Entry(self.frame_auth_tr, width=60)
         try:
             self.entry_deepl_api_key.insert(tk.END, cloudConfig['CLOUD']['deepl_api_key']) #Keyを設定済の場合はそれを表示
         except:
@@ -161,11 +171,15 @@ class Application(tk.Frame):
         lbl_google_project_id.grid(row=1, column=2)
         self.entry_google_project_id.grid(row=1, column=3)
         button_google_project_id.grid(row=1, column=4)
+        
+        lbl_google_client_secret_file.grid(row=2, column=2)
+        self.entry_google_client_secret_file_tr.grid(row=2, column=3)
+        button_google_client_secret_file.grid(row=2, column=4)
 
-        radio_translator_deepl.grid(row=2, column=1)
-        lbl_deepl_api_key.grid(row=2, column=2)
-        self.entry_deepl_api_key.grid(row=2, column=3)
-        button_deepl_api_key.grid(row=2, column=4)
+        radio_translator_deepl.grid(row=3, column=1)
+        lbl_deepl_api_key.grid(row=3, column=2)
+        self.entry_deepl_api_key.grid(row=3, column=3)
+        button_deepl_api_key.grid(row=3, column=4)
 
 
 
@@ -173,7 +187,7 @@ class Application(tk.Frame):
         # 読み上げクラウドサービス
         self.frame_auth_sp = tk.Frame(self.frame_auth)
         self.frame_auth_sp.pack()
-        lbl_speech = tk.Label(self.frame_auth_sp, text="読み上げサービス")
+        lbl_speech = tk.Label(self.frame_auth_sp, text="読み上げサービス", width=15)
         self.ttsService = tk.StringVar()
         try:
             self.ttsService.set(cloudConfig['CLOUD']['tts_service']) #前回選択されたサービスを初期値に選択
@@ -184,7 +198,7 @@ class Application(tk.Frame):
         radio_speech_azure = tk.Radiobutton(self.frame_auth_sp, text='azure', value='azure', variable=self.ttsService, command=self.set_ttsService)
 
         lbl_google_project_id_sp = tk.Label(self.frame_auth_sp, text="Google Project ID")
-        self.entry_google_project_id_sp = tk.Entry(self.frame_auth_sp, width=50)
+        self.entry_google_project_id_sp = tk.Entry(self.frame_auth_sp, width=60)
         try:
             self.entry_google_project_id_sp.insert(tk.END, cloudConfig['CLOUD']['google_project_id']) #Keyを設定済の場合はそれを表示
         except:
@@ -193,8 +207,16 @@ class Application(tk.Frame):
                                                 text='更新', 
                                                 command=lambda:self.update_cloud_ini('google_project_id', self.entry_google_project_id_sp, 'Google Project ID'))
 
+        lbl_google_client_secret_file = tk.Label(self.frame_auth_sp, text="Google Client Secret File")
+        self.entry_google_client_secret_file_sp = tk.Entry(self.frame_auth_sp, width=60)
+        try:
+            self.entry_google_client_secret_file_sp.insert(tk.END, cloudConfig['CLOUD']['google_client_secret_file']) #Keyを設定済の場合はそれを表示
+        except:
+            pass
+        button_google_client_secret_file = tk.Button(self.frame_auth_sp, text="選択", command=self.select_client_file)
+
         lbl_azure_speech_key = tk.Label(self.frame_auth_sp, text="Azure API Key")
-        self.entry_azure_speech_key = tk.Entry(self.frame_auth_sp, width=50)
+        self.entry_azure_speech_key = tk.Entry(self.frame_auth_sp, width=60)
         try:
             self.entry_azure_speech_key.insert(tk.END, cloudConfig['CLOUD']['azure_speech_key']) #Keyを設定済の場合はそれを表示
         except:
@@ -212,10 +234,14 @@ class Application(tk.Frame):
         self.entry_google_project_id_sp.grid(row=1, column=3)
         button_google_project_id_sp.grid(row=1, column=4)
 
-        radio_speech_azure.grid(row=2, column=1)
-        lbl_azure_speech_key.grid(row=2, column=2)
-        self.entry_azure_speech_key.grid(row=2, column=3)
-        button_azure_speech_key.grid(row=2, column=4)
+        lbl_google_client_secret_file.grid(row=2, column=2)
+        self.entry_google_client_secret_file_sp.grid(row=2, column=3)
+        button_google_client_secret_file.grid(row=2, column=4)
+
+        radio_speech_azure.grid(row=3, column=1)
+        lbl_azure_speech_key.grid(row=3, column=2)
+        self.entry_azure_speech_key.grid(row=3, column=3)
+        button_azure_speech_key.grid(row=3, column=4)
 
         #---------------------------------------
         #  実行ボタン
@@ -228,19 +254,28 @@ class Application(tk.Frame):
         self.message_label = tk.Label(self.frame_exe, text="")
         self.message_label.pack()
 
-    def select_mov_path(self):
+    def select_video_file(self):
         # 動画ファイル選択ボタンが押された時の処理
         self.video_file_path = filedialog.askopenfilename()
         self.entry1.delete(0, tk.END)  # Entryウィジェットの中身を削除
         self.entry1.insert(tk.END, self.video_file_path)  # Entryウィジェットにファイルパスを表示
         batchConfig['SETTINGS']['original_video_file_path'] = self.video_file_path # 動画ファイルのパスを編集
 
-    def select_sub_path(self):
+    def select_subtitle_file(self):
         # 字幕ファイル選択ボタンが押された時の処理
         self.subtitle_file_path = filedialog.askopenfilename()
         self.entry2.delete(0, tk.END)  # Entryウィジェットの中身を削除
         self.entry2.insert(tk.END, self.subtitle_file_path)  # Entryウィジェットにファイルパスを表示
         batchConfig['SETTINGS']['srt_file_path'] = self.subtitle_file_path # 字幕ファイルのパスをiniファイルに書き込む
+
+    def select_client_file(self):
+        # クライアントシークレットファイル選択ボタンが押された時の処理
+        self.google_client_secret_file_path = filedialog.askopenfilename()
+        self.entry_google_client_secret_file_tr.delete(0, tk.END)  # 翻訳サービスEntryウィジェットの中身を削除
+        self.entry_google_client_secret_file_sp.delete(0, tk.END)  # 読み上げサービスEntryウィジェットの中身を削除
+        self.entry_google_client_secret_file_tr.insert(tk.END, self.google_client_secret_file_path)  # Entryウィジェットにファイルパスを表示
+        self.entry_google_client_secret_file_sp.insert(tk.END, self.google_client_secret_file_path)  # Entryウィジェットにファイルパスを表示
+        cloudConfig['CLOUD']['google_client_secret_file'] = self.google_client_secret_file_path # 字幕ファイルのパスをiniファイルに書き込む
 
     def set_TranslateService(self):
         cloudConfig['CLOUD']['translate_service'] = self.preferredTranslateService.get()
