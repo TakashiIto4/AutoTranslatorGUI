@@ -1,6 +1,6 @@
 # AutoTranslatorGUI  
 https://github.com/ThioJoe/Auto-Synced-Translated-Dubs  
-をGUI化するために作成。  
+をデスクトップアプリ化するために作成。  
 動画ファイルと字幕ファイルを準備すれば自動で翻訳された字幕ファイルと吹き替え音声を作成できる。  
 デスクトップアプリはAppGUI.pyから起動できる。  
 CUIで使いたい場合はmain.pyを実行すれば自動翻訳・吹替ができる。  
